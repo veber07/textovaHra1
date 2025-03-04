@@ -13,7 +13,7 @@ public class WorldMap {
 
 public boolean loadMap(){
     try (BufferedReader br = new BufferedReader(new FileReader("src/rooms"))) {
-        String line = br.readLine();
+        String line;
         while ((line = br.readLine()) != null) {
             String[] parts = line.split(",");
             int id = Integer.parseInt(parts[0]);
