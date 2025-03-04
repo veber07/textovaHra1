@@ -8,8 +8,13 @@ public class Movement {
         this.curLoc = startloc;
     }
 
-    private void move(String direction) {
+    public void move(String direction) {
         Location curr = mapa.get(curLoc);
+
+        if(curr == null) {
+            System.out.println("chyba");
+            return;
+        }
         int newLoc = curr.getExit(direction);
         if(newLoc != 0 && mapa.containsKey(newLoc)) {
             curLoc = newLoc;
@@ -19,8 +24,14 @@ public class Movement {
             System.out.println("nejde");
         }
     }
+
     public void curVypis(){
-        System.out.println("jses v " + mapa.get(curLoc).getName());
+        Location currentLocation = mapa.get(curLoc);
+        if (currentLocation != null) {
+            System.out.println("Jses v " + currentLocation.getName());
+        } else {
+            System.out.println("Nejde toto  " + curLoc);
+        }
     }
 
 }

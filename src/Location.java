@@ -21,7 +21,7 @@ public class Location {
 
     }
     public int getExit(String direction){
-        return exits.getOrDefault(direction, 1);
+        return exits.getOrDefault(direction, 0);
     }
 
     public String getName() {

@@ -9,7 +9,7 @@ import java.util.Map;
 
 public class WorldMap {
     private Map<Integer,Location> mapa = new HashMap<>();
-    private Movement movement;
+    public Movement movement;
 
 public boolean loadMap(){
     try (BufferedReader br = new BufferedReader(new FileReader("src/rooms"))) {
@@ -24,7 +24,14 @@ public boolean loadMap(){
             int west = Integer.valueOf(parts[5]);
             mapa.put(id, new Location(name, id, nor, east, south, west));
         }
+
+        System.out.println("Nactene " + mapa.keySet());
+        if (!mapa.containsKey(1)) {
+            System.out.println("nenalezerna mistnost 1  ");
+        }
+
         movement = new Movement(mapa, 1);
+        movement.curVypis();
 
         return true;
     }catch (IOException e){
