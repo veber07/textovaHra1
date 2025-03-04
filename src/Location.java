@@ -8,6 +8,7 @@ public class Location {
     int id;
     Map<String, Integer> exits;
 
+
     public Location(String name, int id, int nor,int east,int south,int west ) {
         this.name = name;
         this.id = id;
@@ -21,5 +22,13 @@ public class Location {
     }
     public int getExit(String direction){
         return exits.getOrDefault(direction, 1);
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }
