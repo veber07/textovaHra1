@@ -1,13 +1,11 @@
-public class Moving extends Command {
-
+public class Exit extends Command {
     @Override
     public String execute() {
-        return "jdi";
+        return "ending....endi....";
     }
 
     @Override
     public boolean exit() {
-        return false ;
+        return true;
     }
-
 }

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>C:/Users/spide/IdeaProjects/textovaHra/src</OriginalElement>
+  <nodes>
+    <node x="19.0" y="655.5">Command</node>
+    <node x="291.0" y="527.5">Main</node>
+    <node x="227.0" y="680.5">Char</node>
+    <node x="-56.5" y="986.5">Movement</node>
+    <node x="232.5" y="234.5">Console</node>
+    <node x="279.0" y="855.5">search</node>
+    <node x="143.5" y="540.5">speak</node>
+    <node x="379.0" y="1035.5">Unlock</node>
+    <node x="479.0" y="855.5">give</node>
+    <node x="80.5" y="-13.5">Location</node>
+    <node x="-65.5" y="282.5">WorldMap</node>
+    <node x="579.0" y="1035.5">Take</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="Unlock" target="Command" relationship="GENERALIZATION">
+      <point x="0.0" y="-56.5" />
+      <point x="453.0" y="832.0" />
+      <point x="93.0" y="832.0" />
+      <point x="0.0" y="56.5" />
+    </edge>
+    <edge source="give" target="Command" relationship="GENERALIZATION">
+      <point x="0.0" y="-56.5" />
+      <point x="553.0" y="832.0" />
+      <point x="93.0" y="832.0" />
+      <point x="0.0" y="56.5" />
+    </edge>
+    <edge source="search" target="Command" relationship="GENERALIZATION">
+      <point x="0.0" y="-56.5" />
+      <point x="353.0" y="832.0" />
+      <point x="93.0" y="832.0" />
+      <point x="0.0" y="56.5" />
+    </edge>
+    <edge source="Take" target="Command" relationship="GENERALIZATION">
+      <point x="0.0" y="-56.5" />
+      <point x="653.0" y="832.0" />
+      <point x="93.0" y="832.0" />
+      <point x="0.0" y="56.5" />
+    </edge>
+    <edge source="Movement" target="Command" relationship="GENERALIZATION">
+      <point x="0.0" y="-105.5" />
+      <point x="0.0" y="56.5" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Compact" zoom="0.382508116883117" showDependencies="false" x="325.79442970822254" y="798.8716180371351" />
+  <SelectedNodes />
+  <Categories>
+    <Category>Constructors</Category>
+    <Category>Fields</Category>
+    <Category>Inner Classes</Category>
+    <Category>Methods</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

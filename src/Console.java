@@ -12,7 +12,7 @@ public class Console {
         WorldMap wm = new WorldMap();
         wm.loadMap();
         prikazy = new HashMap<>();
-        prikazy.put("jdi", new Movement(wm, sc));
+        prikazy.put("jdi", new Movement(wm, ));
 
     }
     private void doIt(){

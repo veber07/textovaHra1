@@ -9,6 +9,7 @@ public class Movement extends Command {
     }
 
     public void move(String direction) {
+
         Location curr = mapa.get(curLoc);
 
         if(curr == null) {
@@ -36,7 +37,8 @@ public class Movement extends Command {
 
     @Override
     public String execute() {
-        return "jdes ;
+        move();
+        return "jdes" + mapa.get(curLoc).getName() ;
     }
 
     @Override
