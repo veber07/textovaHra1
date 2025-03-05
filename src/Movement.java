@@ -1,5 +1,5 @@
 import java.util.Map;
-public class Movement {
+public class Movement extends Command {
     private Map<Integer, Location> mapa;
     private int curLoc;
 
@@ -34,4 +34,13 @@ public class Movement {
         }
     }
 
+    @Override
+    public String execute() {
+        return "jdes ;
+    }
+
+    @Override
+    public boolean exit() {
+        return false;
+    }
 }
