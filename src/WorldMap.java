@@ -11,7 +11,11 @@ public class WorldMap {
     private Map<Integer,Location> mapa = new HashMap<>();
     public Movement movement;
 
-public boolean loadMap(){
+    public Map<Integer, Location> getMapa() {
+        return mapa;
+    }
+
+    public boolean loadMap(){
     try (BufferedReader br = new BufferedReader(new FileReader("src/rooms"))) {
         String line;
         while ((line = br.readLine()) != null) {

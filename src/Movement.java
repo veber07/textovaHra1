@@ -1,48 +1,57 @@
 import java.util.Map;
-public class Movement extends Command {
-    private Map<Integer, Location> mapa;
+public class Movement {
+    public Map<Integer, Location> mapa;
     private int curLoc;
+    public Map<Integer, Location> getMapa() {
+        return mapa;
+    }
 
-    public Movement(Map<Integer, Location> mapa,int startloc) {
+    public int getCurLoc() {
+        return curLoc;
+    }
+
+    public void setCurLoc(int curLoc) {
+        this.curLoc = curLoc;
+    }
+
+    public Movement(Map<Integer, Location> mapa, int startloc) {
         this.mapa = mapa;
         this.curLoc = startloc;
+
     }
 
     public void move(String direction) {
 
         Location curr = mapa.get(curLoc);
 
+
         if(curr == null) {
             System.out.println("chyba");
             return;
         }
         int newLoc = curr.getExit(direction);
+
         if(newLoc != 0 && mapa.containsKey(newLoc)) {
             curLoc = newLoc;
-
-            System.out.println("presunuli jste se do " + mapa.get(curLoc).getName());
+            System.out.println("jsi v  " + mapa.get(curLoc).getName());
         }else {
             System.out.println("nejde");
         }
     }
 
-    public void curVypis(){
+    public String curVypis() {
+        System.out.println("1");
+        System.out.println( mapa.get(curLoc));
         Location currentLocation = mapa.get(curLoc);
         if (currentLocation != null) {
-            System.out.println("Jses v " + currentLocation.getName());
+            return ("jses v" + currentLocation.getName());
         } else {
-            System.out.println("Nejde toto  " + curLoc);
+           return ("nejde to" + curLoc);
         }
+
     }
 
-    @Override
-    public String execute() {
-        move();
-        return "jdes" + mapa.get(curLoc).getName() ;
-    }
 
-    @Override
-    public boolean exit() {
-        return false;
-    }
+
+
 }
