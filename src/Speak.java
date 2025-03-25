@@ -5,8 +5,8 @@ public class Speak extends Command {
     private Char charmanag;
     private Movement movement;
 
-    public Speak(Char characterManager, Movement movement) {
-        this.charmanag = characterManager;
+    public Speak(Char charmanag, Movement movement) {
+        this.charmanag = charmanag;
         this.movement = movement;
     }
 
@@ -14,10 +14,10 @@ public class Speak extends Command {
     public String execute() {
 
         Location currentRoom = getroombyid(movement.getCurLoc());
-        String character = charbyroom(currentRoom);
+        String charc = charbyroom(currentRoom);
 
-        if (character != null) {
-            return charmanag.getCharacterDialogue(character);
+        if (charc != null) {
+            return charmanag.getCharacterDialog(charc);
         } else {
             return "neni tady postavicka";
         }
@@ -31,7 +31,7 @@ public class Speak extends Command {
     private Location getroombyid(int id) {
         Location room = movement.getMapa().get(id);
         if (room == null) {
-            System.out.println("nenasel jsem to ");
+            System.out.println("nenasel jsem to");
         } else {
             System.out.println("jdeto ");
         }

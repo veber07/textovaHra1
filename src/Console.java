@@ -9,6 +9,7 @@ public class Console {
     private boolean exit = false;
     private HashMap<String, Command> prikazy;
     private Char characterManager;
+    private Itemikz itemikz;
 
 
 
@@ -18,19 +19,27 @@ public class Console {
         WorldMap wm = new WorldMap();
         wm.loadMap();
         Map<Integer, Location> mapa = wm.getMapa();
-        String dialogueFilePath = "src/dialog";
-        characterManager = new Char(wm, dialogueFilePath);
-        Movement movement = new Movement(mapa, 1);
+        String dialogiskyFilePath = "src/dialog";
+        String itemsPath = "src/items";
+        String charPath = "src/char";
+        String roomsPath = "src/rooms";
+        itemikz = new Itemikz( wm, itemsPath);
+        characterManager = new Char(wm,charPath, dialogiskyFilePath);
+
         Inventaros inve = new Inventaros();
+        Movement movement = new Movement(mapa, 1,inve);
+
 
         prikazy = new HashMap<>();
 
 
         prikazy.put("go", new Move(movement));
         prikazy.put("exit", new Exit());
-        prikazy.put("give", new Give(characterManager));
+        prikazy.put("give", new Give(characterManager,inve,movement));
         prikazy.put("take", new Take(movement,inve));
         prikazy.put("speak", new Speak(characterManager, movement));
+        prikazy.put("view", new View(movement, inve));
+        prikazy.put("unlock", new Unlock(movement, inve));
 
     }
     private void doIt() {
@@ -38,7 +47,8 @@ public class Console {
 
         String prikaz = sc.next();
         if (prikazy.containsKey(prikaz)) {
-            if (prikaz.equals("go")) {
+
+             if (prikaz.equals("go")) {
                 String direction = sc.next();
                 Move movee = (Move) prikazy.get(prikaz);
                 movee.setDirection(direction);

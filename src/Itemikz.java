@@ -1,75 +1,74 @@
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.*;
 
 public class Itemikz {
     private Map<Integer, Location> rooms;
-    private List<Item> items;
+    private ArrayList<Item> items;
+   private Location location;
 
-    public Itemikz(String locationsFile, String itemsFile) {
-        this.rooms = new HashMap<>();
+    public Itemikz(WorldMap worldMap, String itemsFile) {
+
+
+        System.out.println("predmety jdou na sva mista ");
+
+        this.rooms = worldMap.getMapa();
         this.items = new ArrayList<>();
 
-
-        loadRooms(locationsFile);
-        loadItems(itemsFile);
-    }
-
-
-    private void loadRooms(String filePath) {
-        try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
-            String line;
-            while ((line = reader.readLine()) != null) {
-                String[] parts = line.split(",");
-                if (parts.length == 2) {
-                    String itemName = parts[0].trim();
-                    int roomId = Integer.parseInt(parts[1].trim());
-
-                    Location location = rooms.get(roomId);
-
-                    if (location != null) {
-                        Item item = new Item(itemName, location);
-                        location.addItem(item);
-
-                    } else {
-                        System.out.println("neni tu predmet");
-                    }
-
-                }
-            } catch(IOException e){
-                e.printStackTrace();
-            }
+        if (this.rooms == null) {
+            System.out.println("nenacetli se misntnosti ");
+        } else if (this.rooms.isEmpty()) {
+            System.out.println("jsou prazdny");
+        } else {
+            System.out.println("mistnosti/ " + this.rooms.keySet());
         }
 
 
+        loadItems(itemsFile);
+
+    }
+
+
+
+
         private void loadItems (String filePath){
-            try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
+            try (BufferedReader bf = new BufferedReader(new FileReader(filePath))) {
+
                 String line;
-                while ((line = reader.readLine()) != null) {
+                while ((line = bf.readLine()) != null) {
                     String[] parts = line.split(",");
-                    if (parts.length == 2) {
+                    if (parts.length == 3) {
+                        System.out.println("funguje");
                         String itemName = parts[0].trim();
                         int roomId = Integer.parseInt(parts[1].trim());
+                        System.out.println(roomId + "uuuu" + itemName);
+                        int importanteId = Integer.parseInt(parts[2].trim());
+
 
                         Location location = rooms.get(roomId);
+                        System.out.println("pridavam" + itemName + "do" + roomId);
 
+//lohv
                         if (location != null) {
-                            Item item = new Item(itemName, location);
+                            Item item = new Item(itemName, importanteId, location);
                             location.addItem(item);
-
+                            System.out.println("Predmet" + itemName + " pridan do mistnosti " + roomId);
+                            items.add(item);
                         } else {
-                            System.out.println("neexistuje");
+                            System.out.println("Místnost s id" + roomId + "neexistuje");
                         }
                     }
                 }
+
             } catch (IOException e) {
                 e.printStackTrace();
             }
         }
 
 
-        public List<Item> getItems () {
+        public ArrayList<Item> getItems () {
             return items;
         }
 
@@ -79,15 +78,7 @@ public class Itemikz {
         }
 
 
-        public List<Item> getItemsInRoom (Location room){
-            List<Item> itemsinroom = new ArrayList<>();
-            for (Item item : items) {
-                if (item.getLocation().equals(room)) {
-                    itemsinroom.add(item);
-                }
-            }
-            return itemsinroom;
-        }
+
 
 
 

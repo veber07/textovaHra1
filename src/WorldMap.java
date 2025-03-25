@@ -26,15 +26,25 @@ public class WorldMap {
             int east = Integer.valueOf(parts[3]);
             int south = Integer.valueOf(parts[4]);
             int west = Integer.valueOf(parts[5]);
-            mapa.put(id, new Location(name, id, nor, east, south, west));
+            Location location = new Location(name, id, nor, east, south, west);
+
+            if (name.equals("Spizirna")) {
+                location.lock("Klic Spizirna");
+            } else if (name.equals("Loznice")) {
+                location.lock("Klic Loznice");
+            }
+            mapa.put(id, location);
+
+
         }
 
-        System.out.println("Nactene " + mapa.keySet());
+        System.out.println("Nacten " + mapa.keySet());
         if (!mapa.containsKey(1)) {
-            System.out.println("nenalezerna mistnost 1  ");
+            System.out.println("nenalezerna mistnost 1 ");
         }
+        Inventaros inve = new Inventaros();
 
-        movement = new Movement(mapa, 1);
+        movement = new Movement(mapa, 1,inve);
         movement.curVypis();
 
         return true;
@@ -49,7 +59,9 @@ public class WorldMap {
 
 
 
+
         }
+
 
 
 

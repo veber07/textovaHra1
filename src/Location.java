@@ -8,12 +8,16 @@ public class Location {
     int id;
    private Map<String, Integer> exits;
     private ArrayList<Item> items;
+    private boolean locked = false;
+    private String reqKez;
 
     public Location(String name, int id, int nor, int east, int south, int west) {
         this.name = name;
         this.id = id;
         this.exits = new HashMap<>();
         this.items = new ArrayList<>();
+        this.locked = false;
+
         exits.put("north", nor);
         exits.put("east", east);
         exits.put("south", south);
@@ -43,6 +47,25 @@ public class Location {
     public ArrayList<Item> getItems() {
         return items;
     }
+    public boolean isLocked() {
+        return locked;
+    }
+
+    public void lock(String key) {
+        this.locked = true;
+        this.reqKez = key;
+    }
+
+
+    public void unlock() {
+        this.locked = false;
+        this.reqKez = null;
+    }
+
+    public String getReqKez() {
+        return reqKez;
+    }
+
 
 
     public void removeItem(Item item) {
