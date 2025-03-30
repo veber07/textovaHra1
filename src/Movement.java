@@ -8,6 +8,7 @@ public class Movement {
     public Map<Integer, Location> getMapa() {
         return mapa;
     }
+    private int lastloc = 1;
 
     public int getCurLoc() {
         return curLoc;
@@ -33,19 +34,36 @@ public class Movement {
     public void move(String direction) {
         Location currentRoom = mapa.get(curLoc);
 
-        int nextLocId = currentRoom.getExit(direction);
-        Location nextRoom = mapa.get(nextLocId);
+        if (currentRoom == null) {
+            currentRoom = mapa.get(lastloc);
+        }
 
+
+        int nextLocId = currentRoom.getExit(direction);
+
+
+        if (nextLocId == -1) {
+            System.out.println("neplatny smer ");
+            return;
+        }
+
+        Location nextRoom = mapa.get(nextLocId);
 
         if (nextRoom != null && nextRoom.isLocked()) {
             if (!roomUnlock) {
-                System.out.println("tato mistnost je zamcena, pouzij unclock nebo najdi klic");
+                System.out.println("mistnost je zamcena musis ji odemknout prikazem unlock pokud mas klic");
                 return;
             }
         }
-        curLoc = nextLocId;
-        System.out.println("jsi v mistnusce" + nextRoom.getName());
 
+
+        if (nextRoom != null) {
+            lastloc = curLoc;
+            curLoc = nextLocId;
+            System.out.println("jsi v mistnosti: " + nextRoom.getName());
+        } else {
+            System.out.println("spatny prikaz");
+        }
 
     }
 

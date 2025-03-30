@@ -20,7 +20,7 @@ public class View extends Command {
             String keyName = null;
 
             if (roomName.equals("Kuchyn")) {
-                keyName = "klic Spizirna";
+                keyName = "Klic Spizirna";
             } else if (roomName.equals("Garaz")) {
                 keyName = "Klic Loznice";
             }
