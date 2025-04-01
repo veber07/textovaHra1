@@ -96,6 +96,7 @@ public class Location {
      * porovnává  dva  objekty, pokud maji stejné id tak jsou stejný.
      *
      * @param obj Objek se kterým porovnáváme tuto místnost.
+     * @author [ChatGpt]
      */
     @Override
     public boolean equals(Object obj) {
