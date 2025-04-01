@@ -1,14 +1,29 @@
+
+
+/**
+ * Třída reprezentující příkaz pro odemknutí zamčených místností.
+ *
+ */
 public class Unlock extends Command {
     private Movement movement;
     private Inventaros inventory;
 
 
+    /**
+     * Konstruktor
+     *
 
+     * @param movement  správa pohybu mezi místnostmi.
+     * @param inventory správa inventáře hráče.
+     */
     public Unlock(Movement movement, Inventaros inventory) {
         this.movement = movement;
         this.inventory = inventory;
     }
-
+    /**
+     * Provádí příkaz odemknutí zamčené místnosti.
+     *
+     */
     @Override
     public String execute() {
         Location currentRoom = movement.getMapa().get(movement.getCurLoc());
@@ -37,7 +52,10 @@ public class Unlock extends Command {
 
         return " nemas okolo sebe zamcene dvere";
     }
+    /**
+     * Určuje, že hra nemá být ukončena.
 
+     */
     @Override
     public boolean exit() {
         return false;

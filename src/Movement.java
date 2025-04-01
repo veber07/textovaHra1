@@ -1,5 +1,10 @@
 import java.util.HashSet;
 import java.util.Map;
+
+/**
+ * Třída reprezentující logiku pohybu postavy mezi místnostmi.
+ *
+ */
 public class Movement {
     public Map<Integer, Location> mapa;
     private int curLoc;
@@ -19,6 +24,15 @@ public class Movement {
     }
     private boolean roomUnlock = false;
 
+
+    /**
+     * Konstruktor pro vytvoření instance pohybu.
+     *
+
+     * @param mapa Mapa místností.
+     * @param startloc Počáteční ID místnosti.
+     * @param inventaros Inventář postavy.
+     */
     public Movement(Map<Integer, Location> mapa, int startloc,Inventaros inventaros) {
         this.mapa = mapa;
         this.curLoc = startloc;
@@ -30,7 +44,13 @@ public class Movement {
 
 
     }
-
+    /**
+     * Provádí pohyb postavy do zadaného směru,kontroluje platnost směru, a zamčené místnosti
+     *
+     *
+     *
+     * @param direction Směr pohybu např. " west"
+     */
     public void move(String direction) {
         Location currentRoom = mapa.get(curLoc);
 
@@ -66,7 +86,11 @@ public class Movement {
         }
 
     }
-
+    /**
+     * Vrátí výpis aktuální místnosti, ve které se postava nachází.
+     *
+     * @return Jméno aktuální místnosti.
+     */
     public String curVypis() {
         Location currentRoom = mapa.get(curLoc);
         if (currentRoom != null) {
@@ -76,6 +100,11 @@ public class Movement {
     }
 
 
+
+    /**
+     * Odemkne místnost takže do ní může postava vejít.
+     *
+     */
     public void unlockRoom() {
         roomUnlock = true;
     }

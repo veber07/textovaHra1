@@ -1,14 +1,30 @@
+
+
+/**
+ * Třída reprezentující  příkaz pro sebrání klíče v místnosti .
+
+ */
 public class View extends Command {
     private Movement movement;
     private Inventaros inventory;
 
 
+    /**
+     * Konstruktor
+     *
 
+     * @param movement  správa pohybu mezi místnostmi.
+     * @param inventory  správa inventáře hráče.
+     */
     public View(Movement movement, Inventaros inventory) {
             this.movement = movement;
             this.inventory = inventory;
         }
-
+    /**
+     * Provádí příkaz sebrání klíče v místnosti pokud tam je .
+     *
+     .
+     */
         @Override
         public String execute() {
             Location currentRoom = movement.getMapa().get(movement.getCurLoc());
@@ -34,7 +50,10 @@ public class View extends Command {
 
             return "Tady klickos neni";
         }
-
+    /**
+     * Určuje, že hra nemá být ukončena.
+     *
+     */
         @Override
         public boolean exit() {
             return false;

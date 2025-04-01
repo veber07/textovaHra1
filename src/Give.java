@@ -1,6 +1,8 @@
 import java.util.Map;
 import java.util.Scanner;
-
+/**
+ * Třída Give představuje příkaz pro darování předmětu určité postavě.
+ */
 public class Give extends Command {
 
 
@@ -9,12 +11,22 @@ public class Give extends Command {
     private Movement movement;
     private boolean dead = false;
 
+    /**
+     * Konstruktor pro vytvoření příkazu Give.
+     *
+     * @param charManag Správce postav.
+     * @param inve Inventář hráče.
+     * @param movement pohyb hráče.
+     */
     public Give(Char charManag, Inventaros inve, Movement movement) {
         this.charManager = charManag;
         this.inventory = inve;
         this.movement = movement;
     }
-
+    /**
+     * příkaz pro darování předmětu postavě v určité místnosti.
+     *
+     */
     @Override
     public String execute() {
         Location currentRoom = movement.mapa.get(movement.getCurLoc());
@@ -69,19 +81,11 @@ public class Give extends Command {
         return "DAL SI " + selectItem.getName() + "postave" + charere ;
 
     }
+    /**
+     * Určuje, že hra nemá být ukončena.
+     *
 
-
-
-
-
-
-
-
-
-
-
-
-
+     */
     @Override
     public boolean exit() {
         if(dead){

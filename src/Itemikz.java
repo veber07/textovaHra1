@@ -3,12 +3,19 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.*;
-
+/**
+ * Třída Itemikz je zodpovědná za načítání a správu předmětů ve hře, předměty načíta a dává je do místností.
+ *
+ */
 public class Itemikz {
     private Map<Integer, Location> rooms;
     private ArrayList<Item> items;
    private Location location;
-
+    /**
+     * Konstruktor pro vytvoření objektu Itemikz, načítá místnosti a dává předměty do místností
+     * @param worldMap Mapa místností.
+     * @param itemsFile Cesta k souboru.
+     */
     public Itemikz(WorldMap worldMap, String itemsFile) {
 
 
@@ -32,7 +39,11 @@ public class Itemikz {
 
 
 
-
+    /**
+     * Načítá předměty ze souboru a přiřazuje je do odpovídajících místností.
+     *
+     * @param filePath Cesta k souboru s předměty.
+     */
         private void loadItems (String filePath){
             try (BufferedReader bf = new BufferedReader(new FileReader(filePath))) {
 
@@ -68,14 +79,6 @@ public class Itemikz {
         }
 
 
-        public ArrayList<Item> getItems () {
-            return items;
-        }
-
-
-        public Map<Integer, Location> getRooms () {
-            return rooms;
-        }
 
 
 

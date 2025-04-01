@@ -2,7 +2,10 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Scanner;
 import java.util.Map;
-
+/**
+ * Třída Console  zpracovává uživatelské  příkazy ve hře.
+ * Inicializuje mapu světa, postavy, předměty a příkazy.
+ */
 public class Console {
     ArrayList<String> commands;
     private Scanner sc = new Scanner(System.in);
@@ -14,7 +17,10 @@ public class Console {
 
 
 
-
+    /**
+     * Inicializuje herní prostředí, načte mapu, postavy, dialogy a předměty a nastavý příkazy.
+     *
+     */
     public void inicial() {
         WorldMap wm = new WorldMap();
         wm.loadMap();
@@ -42,6 +48,9 @@ public class Console {
         prikazy.put("unlock", new Unlock(movement, inve));
 
     }
+    /**
+     * Zpracuje uživatelský příkazy.
+     */
     private void doIt() {
         System.out.print(">>>>");
 
@@ -63,6 +72,10 @@ public class Console {
 
 
     }
+    /**
+     * Spustí herní smyčku dokud ji hrář neukončí.
+     *
+     */
     public void start(){
         inicial();
         do{

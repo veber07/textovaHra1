@@ -6,7 +6,11 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
+/**
+ * Třída pro správu místností .
+ *
 
+ */
 public class WorldMap {
     private Map<Integer,Location> mapa = new HashMap<>();
     public Movement movement;
@@ -14,7 +18,13 @@ public class WorldMap {
     public Map<Integer, Location> getMapa() {
         return mapa;
     }
-
+    public void setMapa(Map<Integer, Location> mapa) {
+        this.mapa = mapa;
+    }
+    /**
+     * Načítá místnosti ze souboru, každí´á místnost má id a vchody a určuje se jestli je místnost zamčená
+     *
+     */
     public boolean loadMap(){
     try (BufferedReader br = new BufferedReader(new FileReader("src/rooms"))) {
         String line;
