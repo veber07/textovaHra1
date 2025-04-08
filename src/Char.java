@@ -59,7 +59,7 @@ public class Char {
 
     private void charToRooms(WorldMap worldMap) {
         ArrayList<Location> availableRooms = new ArrayList<>(worldMap.getMapa().values());
-        availableRooms.removeIf(room -> room.getName().equals("chodba"));
+        availableRooms.removeIf(room -> room.getName().equals("Chodba"));
         Random rd = new Random();
         for (String character : charIdsss.keySet()) {
             if (!availableRooms.isEmpty()) {
@@ -85,9 +85,9 @@ public class Char {
      * Vypíše do konzole umístění všech postav.
      */
     public void charlocation() {
-        System.out.println("Postavy bzly umisteni do mistnosti ");
+     //   System.out.println("Postavy bzly umisteni do mistnosti ");
         for (Map.Entry<String, Location> entry : charMap.entrySet()) {
-            System.out.println(entry.getKey() + "je v mistnosti" + entry.getValue().getName());
+          //  System.out.println(entry.getKey() + "je v mistnosti" + entry.getValue().getName());
         }
     }
     /**
@@ -99,7 +99,7 @@ public class Char {
         try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
             String line;
             while ((line = br.readLine()) != null) {
-                String[] parts = line.split(",");
+                String[] parts = line.split(":");
                 if (parts.length == 2) {
                     String character = parts[0].trim();
                     String dialogue = parts[1].trim();
@@ -125,30 +125,24 @@ public class Char {
      */
     public void useItem(String characterName, Item item) {
         if (!charHealth.containsKey(characterName)) {
-            System.out.println("neni postavickos.");
+           // System.out.println("neni postavickos.");
             return;
         }
 
-        if (charHealth.get(characterName)) {
 
-            System.out.println("postava" + characterName + "je vylecena ");
-            return;
-        }
+
 
         int correctItemId = charIdsss.get(characterName);
         int usedItemikId = item.importanteId();
 
 
-        System.out.println("dobry predmet/" + characterName + "ID" + correctItemId);
-        System.out.println("pouzil/ " + usedItemikId);
-
+      //  System.out.println("dobry predmet/" + characterName + "ID" + correctItemId);
+     //   System.out.println("pouzil/ " + usedItemikId);
         if (usedItemikId == correctItemId) {
-
             charHealth.put(characterName, true);
-            System.out.println("Hodnota charHealth po vyleceni: " + charHealth.get(characterName));
-
+         //   System.out.println("Hodnota charHealth po vyleceni: " + charHealth.get(characterName));
             if (allChaHealed()) {
-                System.out.println("uzdravil si vsechny simulanty");
+               System.out.println("uzdravil si vsechny simulanty");
                 System.exit(0);
             }
         } else {
@@ -187,9 +181,11 @@ public class Char {
     public boolean allChaHealed() {
         for (boolean healed : charHealth.values()) {
             if (!healed) {
+
                 return false;
             }
         }
+        System.out.print("Výborně výlečil jsi všechny lidi, můžeš v klidu odject domů");
         return true;
     }
 

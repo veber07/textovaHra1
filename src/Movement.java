@@ -10,6 +10,7 @@ public class Movement {
     private int curLoc;
     private HashSet<Integer> lockedRooms = new HashSet<>();
     private Inventaros inventaros;
+    private WorldMap worldMap;
     public Map<Integer, Location> getMapa() {
         return mapa;
     }
@@ -33,9 +34,10 @@ public class Movement {
      * @param startloc Počáteční ID místnosti.
      * @param inventaros Inventář postavy.
      */
-    public Movement(Map<Integer, Location> mapa, int startloc,Inventaros inventaros) {
+    public Movement(Map<Integer, Location> mapa, int startloc,Inventaros inventaros,WorldMap worldMap) {
         this.mapa = mapa;
         this.curLoc = startloc;
+        this.worldMap = worldMap;
         this.inventaros = inventaros;
         lockedRooms.add(3);
         lockedRooms.add(6);
@@ -80,11 +82,17 @@ public class Movement {
         if (nextRoom != null) {
             lastloc = curLoc;
             curLoc = nextLocId;
-            System.out.println("jsi v mistnosti: " + nextRoom.getName());
+           // System.out.println("jsi v mistnosti: " + nextRoom.getName());
         } else {
             System.out.println("spatny prikaz");
         }
 
+    }
+    public void setWorldMap(WorldMap worldMap) {
+        this.worldMap = worldMap;
+    }
+    public WorldMap getWorldMap() {
+        return worldMap;
     }
     /**
      * Vrátí výpis aktuální místnosti, ve které se postava nachází.

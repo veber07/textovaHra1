@@ -11,7 +11,6 @@ public class Unlock extends Command {
 
     /**
      * Konstruktor
-     *
 
      * @param movement  správa pohybu mezi místnostmi.
      * @param inventory správa inventáře hráče.
@@ -43,7 +42,7 @@ public class Unlock extends Command {
                         modifRomm .unlock();
                         inventory.removeItem(requiredKez);
                         movement.unlockRoom();
-                        return "odemkl jis  " + modifRomm .getName() ;
+                        return "odemkl jsi  " + modifRomm .getName() ;
                     }
                 }
                 return "potrebujeds " + requiredKez;

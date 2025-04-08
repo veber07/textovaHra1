@@ -19,7 +19,7 @@ public class Itemikz {
     public Itemikz(WorldMap worldMap, String itemsFile) {
 
 
-        System.out.println("predmety jdou na sva mista ");
+     //   System.out.println("predmety jdou na sva mista ");
 
         this.rooms = worldMap.getMapa();
         this.items = new ArrayList<>();
@@ -29,7 +29,7 @@ public class Itemikz {
         } else if (this.rooms.isEmpty()) {
             System.out.println("jsou prazdny");
         } else {
-            System.out.println("mistnosti/ " + this.rooms.keySet());
+    //        System.out.println("mistnosti/ " + this.rooms.keySet());
         }
 
 
@@ -51,21 +51,21 @@ public class Itemikz {
                 while ((line = bf.readLine()) != null) {
                     String[] parts = line.split(",");
                     if (parts.length == 3) {
-                        System.out.println("funguje");
+                   //     System.out.println("funguje");
                         String itemName = parts[0].trim();
                         int roomId = Integer.parseInt(parts[1].trim());
-                        System.out.println(roomId + "uuuu" + itemName);
+                     //   System.out.println(roomId + "uuuu" + itemName);
                         int importanteId = Integer.parseInt(parts[2].trim());
 
 
                         Location location = rooms.get(roomId);
-                        System.out.println("pridavam" + itemName + "do" + roomId);
+                        //System.out.println("pridavam" + itemName + "do" + roomId);
 
 //lohv
                         if (location != null) {
                             Item item = new Item(itemName, importanteId, location);
                             location.addItem(item);
-                            System.out.println("Predmet" + itemName + " pridan do mistnosti " + roomId);
+                        //    System.out.println("Predmet" + itemName + " pridan do mistnosti " + roomId);
                             items.add(item);
                         } else {
                             System.out.println("Místnost s id" + roomId + "neexistuje");

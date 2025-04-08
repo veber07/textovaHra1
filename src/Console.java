@@ -1,3 +1,6 @@
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Scanner;
@@ -33,12 +36,12 @@ public class Console {
         characterManager = new Char(wm,charPath, dialogiskyFilePath);
 
         Inventaros inve = new Inventaros();
-        Movement movement = new Movement(mapa, 1,inve);
+        Movement movement = new Movement(mapa, 1,inve,wm);
 
 
         prikazy = new HashMap<>();
 
-
+        prikazy.put("help",new Help(this));
         prikazy.put("go", new Move(movement));
         prikazy.put("exit", new Exit());
         prikazy.put("give", new Give(characterManager,inve,movement));
@@ -67,20 +70,50 @@ public class Console {
                 exit = prikazy.get(prikaz).exit();
             }
         } else {
-            System.out.println("neznam tento prikaz vocasi");
+            System.out.println("neznam tento příkazík");
         }
 
 
     }
+
+
     /**
-     * Spustí herní smyčku dokud ji hrář neukončí.
-     *
+     * Metoda pro čtení a výpis textoveho souboru Zacatek.
      */
+    private void printingStart() {
+        String filePath = "src/Zacatek"; // Zadejte správnou cestu k souboru
+
+        try (BufferedReader bf = new BufferedReader(new FileReader(filePath))) {
+            String line;
+            while ((line = bf.readLine()) != null) {
+                System.out.println(line);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    /*** Spustí herní smyčku dokud ji hrář neukončí.
+     * *
+     * **/
     public void start(){
+        printingStart();
+
         inicial();
         do{
             doIt();
 
         }while(!exit);
+    }
+
+    @Override
+    public String toString() {
+        return "Console{" +
+                "prikazy=" + prikazy +
+                '}';
+    }
+
+    public HashMap<String, Command> getPrikazy() {
+        return prikazy;
     }
 }

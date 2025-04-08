@@ -47,6 +47,9 @@ public class Give extends Command {
         if (charere == null) {
             return "neni zde postava";
         }
+        if (charManager.isCharacterHealed(charere)) {
+            return "Postava " + charere + " je již vyléčena, nemůžeš jí dát další předmět.";
+        }
 
 
         if (inventory.getItems().isEmpty()) {
@@ -63,7 +66,7 @@ public class Give extends Command {
         try {
             vyber = sc.nextInt();
         } catch (Exception e) {
-            return "F";
+            return "Spatny zadani prikazu ";
         }
 
         if (vyber < 1 || vyber > inventory.getItems().size()) {
@@ -78,7 +81,7 @@ public class Give extends Command {
         charManager.toChar(selectItem);
         charManager.useItem(charere, selectItem);
 
-        return "DAL SI " + selectItem.getName() + "postave" + charere ;
+        return "dal jsi  " + selectItem.getName() + "postave " + charere + "a tím si ho vyléčil " ;
 
     }
     /**

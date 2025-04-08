@@ -35,7 +35,7 @@ public class Take extends Command {
                 Item item = itemsinroom.get(0);
                 inve.addItem(item);
                 currroom.removeItem(item);
-                return "predmet" + item.getName() + "sis vzal do inventu";
+                return "predmet" + item.getName() + " sis vzal do inventu";
             } else {
                 return "neni predmet";
             }

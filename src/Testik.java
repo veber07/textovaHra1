@@ -121,7 +121,7 @@ public class Testik {
     }
 
     @Test
-    public void testUnlock() {
+    public void   stUnlock() {
 
 
         Location lockedRoom = new Location(" locked room", 1, 0, 0, 0, 0);
